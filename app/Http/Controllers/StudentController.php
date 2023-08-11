@@ -39,6 +39,8 @@ class StudentController extends Controller
     
        return redirect('/posdata')->with('message', 'New item added successfully');
        }
+
+       
        public function show($id){
         $data = Student::findorFail($id);
        return view('students.edit', ['student' => $data]);
