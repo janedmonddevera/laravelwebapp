@@ -1,8 +1,8 @@
 
 @include('partials._header', [$title])
-
+<body class="bg-slate-700">
+  
 {{-- navbar --}}
-
 
 
 
@@ -14,23 +14,28 @@ $array = array('title' => 'Point-of-Sales Users');
 
 
 
-
 {{--title of the page--}}
     <header class="max-w-lg mx-auto text-center">
-      <h1 class="text-4xl p-6">
-          POINT OF SALES
-      </h1>
+     
     </header>
-    <div class="container flex w-full">
+    <div class="container block w-full">
 
 
-      <div class="w-2/12 max-h-screen bg-slate-900 hidden md:block text-white mr-4 rounded-lg ml-6">
-        <a href="/add/student"> Create new</a>
-      
+      <div>
+
+      </div>
+       
+      <div class="mt-2 py-1  w-3/4 mx-auto ">
+        <div class="w-3/4 mx-auto">
+          <a href="/add/student" class="text-right align-right bg-sky-500 px-4 py-1 rounded hover:bg-sky-400 text-lg"> Add New</a>
+        </div>
+       
       </div>
       {{-- table --}}
-      <div class="overflow-x-auto overflow-y-auto overflow-y-auto max-h-screen relative bg-slate-900  w-full  float-right justify-end rounded-lg" >
-        <table class=" w-full text-sm text-left bg-slate-900 text-gray-300 ">
+      <div class="overflow-x-auto overflow-y-auto overflow-y-auto max-h-3/4 relative items-center   w-3/4 mx-auto " >
+       
+     
+        <table class=" w-3/4 mx-auto mt-2 text-sm text-left bg-slate-900 text-gray-300 ">
           <thead class="text-white text-xs font-bold text-slate-900 uppercase border border-slate-300 bg-slate-500 text-center">
             <tr>
               <th class="p-6 border border-slate-300 " scope="col">
@@ -45,31 +50,41 @@ $array = array('title' => 'Point-of-Sales Users');
               <th class="p-6 border border-slate-300" scope="col">
                 <h1>Age</h1>
               </th>
+              <th>
+
+              </th>
             </tr>
           </thead>
   
           <tbody class="overflow-x-auto h-32">
-            @foreach ($data as $datum)
+            @foreach ($data as $datas)
                 
            
             <tr class=" bg-slate-900 text-white border border-slate-300">
               <td class="py-4 px-6  border border-slate-300" >
-               {{$datum->first_name}}
+               {{$datas->first_name}}
               </td>
               <td class="py-4 px-6 border border-slate-300 ">
-                {{$datum->last_name}}
+                {{$datas->last_name}}
               </td>
               <td class="py-4 px-6 border border-slate-300">
-                {{$datum->email}}
+                {{$datas->email}}
               </td>
               <td class="py-4 px-6 border border-slate-300">
-                {{$datum->age}}
+                {{$datas->age}}
               </td>
-             
+              <td class="py-4 px-6 border border-slate-300">
+              <a href="/index/{{$datas->id}}" class="bg-sky-500 font-bold text-white py-1 px-4 rounded-md">
+                View
+              </a>
+             </td>
             </tr>
             @endforeach
           </tbody>
         </table>
+        <div class="items-center w-3/4 mx-auto">
+      {{ $data->links() }}
+    </div>
       </div>
       
     </div>

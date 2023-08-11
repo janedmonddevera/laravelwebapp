@@ -1,62 +1,82 @@
 @include('partials._header')
+<body class="bg-gradient-to-r from-blue-500 to-slate-900">
+
 <x-nav /> 
 <header class="max-w-lg mx-auto text-center">
-    <h1 class="text-4xl p-6">
-        Register Account
-    </h1>
+ 
 </header>
 
-<main class="max-w-lg mx-auto bg-slate-500 rounded-lg text-center p-6">
+<main class="max-w-lg mx-auto bg-slate-900 rounded-lg text-center p-6  mt-10">
     <section >
         <h1 class="text-white text-2xl pb-4 font-bold">Welcome to Dick system</h1>
-        <p class="text-white text-xl pb-4" >Create your Account</p>
+        <div class="mt-4 mb-4 grid grid-cols-3 items-center text-white">
+            <hr class="border-white" />
+            <p class="text-center text-lg uppercase">create  Account</p>
+            <hr class="border-white" />
+          </div>
     </section>
     <section class="text-white">
         <form action="/main" method="POST">
 
             @csrf
-
-            <div class="p-3 bg-slate-100 text-black text-left rounded-lg mb-6">
-                <label class="block font-bold" for="email">Email </label>
-                <input class="bg-slate-100 focus:outline-none w-full" type="email" name="email" id="email" placeholder="">
-                    @error('email')
-                        <p class="text-red-500 text-sm">
-                            {{$message}}
-                            </p>
-                    @enderror
-            </div>
-            <div class="p-3 bg-slate-100 text-black text-left rounded-lg">
+            <div class="p-3  text-white text-left ">
+                <label class="block font-bold" for="email">Email Address </label>
+            <input type="email" name="email" id="email" placeholder="Enter Email Address" class=" text-black w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
+            @error('email')
+            <p class="text-red-500 text-sm">
+                {{$message}}
+                </p>
+        @enderror
+                </div>
+           
+                <div class="p-3  text-white text-left ">
                 <label class="block font-bold" for="name">Username </label>
-                <input class="bg-slate-100 focus:outline-none w-full" type="text" name="name" id="name" placeholder="">
+                  <input type="text" name="name" id="name" placeholder="Username" class=" text-black w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
                 @error('name')
                 <p class="text-red-500 text-sm">
                     {{$message}}
                     </p>
             @enderror
             </div>
-           <div class="p-3 bg-slate-100 text-black text-left rounded-lg mt-6 mb-6">
+            <div class="p-3  text-white text-left ">
             <label class="block font-bold" for="password">Password: </label>
-            <input class="bg-slate-100 focus:outline-none w-full" type="password" name="password" id="password" placeholder="">
+            <input class="text-black w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" type="password" name="password" id="password" placeholder="">
             @error('password')
             <p class="text-red-500 text-sm">
                 {{$message}}
                 </p>
         @enderror
         </div>
-           <div class="p-3 bg-slate-100 text-black text-left rounded-lg mt-6 mb-6">
+        <div class="p-3  text-white text-left ">
             <label class="block font-bold" for="password_confirmation">Confirm Password: </label>
-            <input class="bg-slate-100 focus:outline-none w-full" type="password" name="password_confirmation" id="password_confirmation" placeholder="">
+            <input class="text-black w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" type="password" name="password_confirmation" id="password_confirmation" placeholder="">
             @error('password')
             <p class="text-red-500 text-sm">
                 {{$message}}
                 </p>
         @enderror
         </div>
-           <button type="submit" class="bg-green-500 shadow-lg py-1 px-4 rounded-md hover:bg-green-700 hover:text-white text-black font-bold transition duration-500">
+        <div class="p-3  text-black text-left rounded-lg ">
+            <button type="submit" class="px-4  w-full block bg-blue-500 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg
+            px-4 py-3 ">
             Create Account
-          </button>
+         </button>
+             </div>
         </form>
-        <a href="/login" class="p-2">Already have an account? Click here</a>
+        <div class="mt-4 mb-4 grid grid-cols-3 items-center text-white">
+            <hr class="border-white" />
+            <p class="text-center text-sm">OR</p>
+            <hr class="border-white" />
+          </div>
+        <form action="/login">
+            <div class="p-3  text-black text-left rounded-lg ">
+                <h1 class="text-center tex-sm text-white">Already Have an Account?</h1>
+                <button type="submit" class="px-4  w-full block bg-blue-500 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg
+                px-4 py-3 ">
+                Sign in
+             </button>
+                 </div>
+                </form>
     </section>
 </main>
 

@@ -11,14 +11,12 @@ use Illuminate\Validation\Rule;
 class StudentController extends Controller
 {
     public function index(){
+        // $data = Student::all();
        
-        $data = Student::all();
-
-        // $data = DB::table('students')
-        //         ->select(DB::raw('count(*) as name_count, first_name
-        //         '))->groupBy('first_name')->get();
+            $hh = array("data" => DB::table('students')->orderBy('created_at','desc')->simplePaginate(10));
+      
        
-        return view('students.index', ['data' => $data])->with(['title', 'Homepage']);
+        return view('students.index',  $hh)->with(['title', 'Homepage']);
     }
 
     public function create(){
@@ -39,6 +37,29 @@ class StudentController extends Controller
         
        Student::create($validated);
     
-       return redirect('/')->with('message', 'New item added successfully');
+       return redirect('/posdata')->with('message', 'New item added successfully');
+       }
+       public function show($id){
+        $data = Student::findorFail($id);
+       return view('students.edit', ['student' => $data]);
+       }
+
+       public function update(Request $request, Student $student){
+
+        $validated = $request->validate([
+            "first_name" => ['required', 'min:4'],
+            "last_name" => ['required', 'min:4'],
+            "age" => ['required'],
+            "email" => ['required', 'email'],
+        ]);
+
+            $student->update($validated);
+
+            return back()->with('message', 'Value updated Successfully');
+       }
+
+       public function destroy(Request $req, Student $student){
+        $student->delete();
+        return redirect('/posdata')->with('message', 'Item Deleted Successfully');
        }
 }

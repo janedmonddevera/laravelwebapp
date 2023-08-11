@@ -30,7 +30,7 @@ use App\Http\Controllers\StudentController;
 // });
 
 
-Route::get('/', [StudentController::class, 'index'])->middleware('auth');
+Route::get('/posdata', [StudentController::class, 'index'])->middleware('auth');
 
 
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
@@ -43,11 +43,16 @@ Route::post('/logout', [UserController::class, 'logout']);
 
 Route::post('/main', [UserController::class, 'store']);
 
-Route::get('/home', [UserController::class, 'home']);
+Route::get('/', [UserController::class, 'home']);
 
 Route::get('/add/student', [StudentController::class, 'create']);
 
 Route::post('/add/student', [StudentController::class, 'store']);
 
+Route::get('/index/{id}', [StudentController::class, 'show']);
 
+Route::put('/index/{student}', [StudentController::class, 'update']);
+Route::put('/index/{student}', [StudentController::class, 'update']);
+
+Route::put('/index/{student}', [StudentController::class, 'destroy']);
 

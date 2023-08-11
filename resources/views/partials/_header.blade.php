@@ -10,7 +10,7 @@
     @vite('resources/css/app.css')
 
 </head>
-<body class="bg-slate-200 min-h-screen pb-6">
+
 
     <x-message />
 
